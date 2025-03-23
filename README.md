@@ -1,5 +1,6 @@
 # RogueRota #
 A very simple addon, executing the rotation of the rogue. Taking buffs, and energy and enemy health into acocunt.
+Copy and Update to reflect Turtle WOW change. 
 
 ## Installing ##   
 1. Download the folder and rename it into RogueRota   
