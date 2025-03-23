@@ -19,7 +19,8 @@ if GetLocale() == "deDE" then
 		[3] = "Heilige Stärke",
 		[4] = "Adrenalinrausch",
 		[5] = "Finsterer Stoß",
-		[6] = "Ausweiden"
+		[6] = "Ausweiden",
+		[7] = "Surprise Attack"
 	}
 
 else
@@ -29,7 +30,8 @@ else
 		[3] = "Holy Strength",
 		[4] = "Adrenaline Rush",
 		[5] = "Sinister Strike",
-		[6] = "Eviscerate"
+		[6] = "Eviscerate",
+		[7] = "Surprise Attack"
 	}
 end
 
@@ -77,7 +79,7 @@ function RogueRota:Rota()
 		if (cP<5) then 
 			if ((cP==1 or cP==3) and (not active or timeLeft < 2)) then
 				if (healthPercent<10 or (health<5000 and healthPercent<50)) then
-					if (energy<=40 and RogueRota:GetNextTick() > 1) then
+					if (energy<=30 and RogueRota:GetNextTick() > 1) then
 						return
 					else
 						if (cP==3) then
@@ -91,13 +93,13 @@ function RogueRota:Rota()
 						CastSpellByName(RogueRota.name[5])
 					else
 						if (Active and AtimeLeft>RogueRota:GetNextTick()) then
-							if (timeLeft>1 and energy<=30 and RogueRota:GetNextTick() > 1) then
+							if (timeLeft>1 and energy<=25 and RogueRota:GetNextTick() > 1) then
 								return
 							else
 								CastSpellByName(RogueRota.name[1])
 							end
 						else
-							if (timeLeft>1 and energy<=65 and RogueRota:GetNextTick() > 1) then
+							if (timeLeft>1 and energy<=60 and RogueRota:GetNextTick() > 1) then
 								return
 							else
 								CastSpellByName(RogueRota.name[1])
@@ -107,7 +109,7 @@ function RogueRota:Rota()
 				end
 			else
 				if ((healthPercent<10 or (health<5000 and healthPercent<50)) and cP>2) then
-					if (energy>=60) then
+					if (energy>=55) then
 						if (health<2500 and healthPercent<25) then
 							CastSpellByName(RogueRota.name[6])
 						else
@@ -117,7 +119,7 @@ function RogueRota:Rota()
 						CastSpellByName(RogueRota.name[6])
 					end
 				else
-					if (healthPercent<5 or (health<2500 and healthPercent<25)) and (energy<40) then
+					if (healthPercent<5 or (health<2500 and healthPercent<25)) and (energy<35) then
 						CastSpellByName(RogueRota.name[6])
 					else
 						CastSpellByName(RogueRota.name[5])
@@ -127,20 +129,20 @@ function RogueRota:Rota()
 		else 
 			if (not active or timeLeft < 2) and (healthPercent>40 or (health>5000 and healthPercent>50)) then
 				if (Eactive) then
-					if (energy<=45 and not Cactive and not Active) then
+					if (energy<=40 and not Cactive and not Active) then
 						return
 					else
 						CastSpellByName(RogueRota.name[6])
 					end
 				else
 					if (Active and AtimeLeft>RogueRota:GetNextTick()) then
-						if (timeLeft>1 and energy<=30 and RogueRota:GetNextTick() > 1) then
+						if (timeLeft>1 and energy<=25 and RogueRota:GetNextTick() > 1) then
 							return
 						else
 							CastSpellByName(RogueRota.name[1])
 						end
 					else
-						if (timeLeft>1 and energy<=65 and RogueRota:GetNextTick() > 1) then
+						if (timeLeft>1 and energy<=60 and RogueRota:GetNextTick() > 1) then
 							return
 						else
 							CastSpellByName(RogueRota.name[1])
@@ -152,13 +154,13 @@ function RogueRota:Rota()
 					CastSpellByName(RogueRota.name[6])
 				else
 					if (Active and AtimeLeft>RogueRota:GetNextTick()) then
-						if (energy<=45 and RogueRota:GetNextTick() > 1) then
+						if (energy<=40 and RogueRota:GetNextTick() > 1) then
 							return
 						else
 							CastSpellByName(RogueRota.name[6])
 						end
 					else
-						if (energy<=65 and RogueRota:GetNextTick() > 1) then
+						if (energy<=60 and RogueRota:GetNextTick() > 1) then
 							return
 						else
 							CastSpellByName(RogueRota.name[6])
